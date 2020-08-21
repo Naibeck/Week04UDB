@@ -1,5 +1,6 @@
 package com.naibeck.week04
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,13 +33,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setClickableSandwiches() {
         binding?.firstSandwich?.setOnClickListener {
-            Toast.makeText(this, avocadoGrilledCheese.toString(), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SandwichDetailActivity::class.java))
         }
         binding?.secondSandwich?.setOnClickListener {
-            Toast.makeText(this, phillyCheese.toString(), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SandwichDetailActivity::class.java))
         }
         binding?.thirdSandwich?.setOnClickListener {
-            Toast.makeText(this, sampler.toString(), Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, SandwichDetailActivity::class.java))
         }
     }
 }
