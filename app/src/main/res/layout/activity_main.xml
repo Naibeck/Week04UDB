@@ -102,5 +102,15 @@
                     tools:text="$15.00" />
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/payButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Pay $45.85" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

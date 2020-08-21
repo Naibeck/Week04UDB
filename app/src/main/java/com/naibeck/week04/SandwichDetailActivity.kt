@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import com.naibeck.week04.MainActivity.Companion.CART_ITEM_KEY
+import com.naibeck.week04.cart.CartItem
 import com.naibeck.week04.databinding.ActivitySandwichDetailBinding
 
 class SandwichDetailActivity : AppCompatActivity() {
@@ -40,6 +42,7 @@ class SandwichDetailActivity : AppCompatActivity() {
     private fun addToCart() {
         parseReceivedSandwich()?.let {
             val intent = Intent()
+            intent.putExtra(CART_ITEM_KEY, CartItem(it, productQuantity))
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
