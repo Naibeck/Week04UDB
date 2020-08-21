@@ -3,16 +3,16 @@ package com.naibeck.week04
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_KEY
 import com.naibeck.week04.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
 
-    private val avocadoGrilledCheese = Sandwich("Avocado Grilled Cheese", 15.00)
-    private val phillyCheese = Sandwich("Phylly Cheese", 25.00)
-    private val sampler = Sandwich("Sampler", 10.00)
+    private val avocadoGrilledCheese = Sandwich("Avocado Grilled Cheese", 15.00, 4.3, "Grilled Cheese Sandwich", R.drawable.sandwich_avocado_grilled_cheese)
+    private val phillyCheese = Sandwich("Phylly Cheese", 25.00, 4.9, "Recommended of the house", R.drawable.sandwich_phylly_cheese)
+    private val sampler = Sandwich("Sampler", 10.00, 4.2, "6 sandwiches from multiple ingredients", R.drawable.sandwich_sampler)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +33,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun setClickableSandwiches() {
         binding?.firstSandwich?.setOnClickListener {
-            startActivity(Intent(this, SandwichDetailActivity::class.java))
+            launchSandwichIntent(avocadoGrilledCheese)
         }
         binding?.secondSandwich?.setOnClickListener {
-            startActivity(Intent(this, SandwichDetailActivity::class.java))
+            launchSandwichIntent(phillyCheese)
         }
         binding?.thirdSandwich?.setOnClickListener {
-            startActivity(Intent(this, SandwichDetailActivity::class.java))
+            launchSandwichIntent(sampler)
         }
+    }
+
+    private fun launchSandwichIntent(sandwich: Sandwich) {
+        val intent = Intent(this, SandwichDetailActivity::class.java)
+        intent.putExtra(SANDWICH_KEY, sandwich)
+        startActivity(intent)
     }
 }
