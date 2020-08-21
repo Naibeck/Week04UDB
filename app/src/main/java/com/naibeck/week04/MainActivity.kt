@@ -1,9 +1,12 @@
 package com.naibeck.week04
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_ADD_REQUEST
 import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_KEY
 import com.naibeck.week04.databinding.ActivityMainBinding
 
@@ -18,6 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         loadSandwichData()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
     }
 
     private fun loadSandwichData() {
@@ -46,6 +54,6 @@ class MainActivity : AppCompatActivity() {
     private fun launchSandwichIntent(sandwich: Sandwich) {
         val intent = Intent(this, SandwichDetailActivity::class.java)
         intent.putExtra(SANDWICH_KEY, sandwich)
-        startActivity(intent)
+        startActivityForResult(intent, SANDWICH_ADD_REQUEST)
     }
 }

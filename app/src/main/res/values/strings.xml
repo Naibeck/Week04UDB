@@ -3,5 +3,5 @@
     <string name="description_label">Description</string>
     <string name="minus_action">-</string>
     <string name="plus_action">+</string>
-    <string name="add_to_cart_action">"Add %1$d"</string>
+    <string name="add_to_cart_action">Add %1$d</string>
 </resources>

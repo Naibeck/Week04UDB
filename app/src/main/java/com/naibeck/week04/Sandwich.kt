@@ -6,7 +6,7 @@ import androidx.annotation.DrawableRes
 
 data class Sandwich(
     val name: String,
-    private val price: Double,
+    val price: Double,
     val rating: Double,
     val description: String,
     @DrawableRes val drawable: Int

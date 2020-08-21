@@ -1,5 +1,7 @@
 package com.naibeck.week04
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -31,7 +33,15 @@ class SandwichDetailActivity : AppCompatActivity() {
             reduceProduct()
         }
         binding?.addButton?.setOnClickListener {
-            Toast.makeText(this, "It will add $productQuantity sandwiches", Toast.LENGTH_SHORT).show()
+            addToCart()
+        }
+    }
+
+    private fun addToCart() {
+        parseReceivedSandwich()?.let {
+            val intent = Intent()
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 
@@ -66,5 +76,6 @@ class SandwichDetailActivity : AppCompatActivity() {
 
     companion object {
         const val SANDWICH_KEY = "sandwich.key"
+        const val SANDWICH_ADD_REQUEST = 101
     }
 }
