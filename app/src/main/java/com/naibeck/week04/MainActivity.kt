@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_ADD_REQUEST
 import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_KEY
 import com.naibeck.week04.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private var binding: ActivityMainBinding? = null
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        Timber.d("RequestCode: $requestCode - ResultCode: $resultCode")
+    }
 
     }
 
