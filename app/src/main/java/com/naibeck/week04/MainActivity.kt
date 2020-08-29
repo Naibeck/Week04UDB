@@ -18,7 +18,7 @@ import com.naibeck.week04.cart.CartItem
 import com.naibeck.week04.databinding.ActivityMainBinding
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnSandwichClickListener{
     private var binding: ActivityMainBinding? = null
 
     private val avocadoGrilledCheese = Sandwich("Avocado Grilled Cheese", 15.00, 4.3, "Grilled Cheese Sandwich", R.drawable.sandwich_avocado_grilled_cheese)
@@ -57,6 +57,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onClick(sandwich: Sandwich) {
+        val intent = Intent(this, SandwichDetailActivity::class.java)
+        intent.putExtra(SANDWICH_KEY, sandwich)
+        startActivityForResult(intent, SANDWICH_ADD_REQUEST)
+    }
+
     private fun addItemToCart(cartItem: CartItem?) {
         cartItem?.let {
             cart.addProduct(it)
@@ -73,16 +79,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadSandwichData() {
         binding?.sandwichesRecycler?.layoutManager = GridLayoutManager(this, 3)
-        binding?.sandwichesRecycler?.adapter = SandwichAdapter(getSandwiches())
-    }
-
-    private fun setClickableSandwiches() {
-    }
-
-    private fun launchSandwichIntent(sandwich: Sandwich) {
-        val intent = Intent(this, SandwichDetailActivity::class.java)
-        intent.putExtra(SANDWICH_KEY, sandwich)
-        startActivityForResult(intent, SANDWICH_ADD_REQUEST)
+        binding?.sandwichesRecycler?.adapter = SandwichAdapter(getSandwiches(), this)
     }
 
     private fun getSandwiches(): List<Sandwich> {
