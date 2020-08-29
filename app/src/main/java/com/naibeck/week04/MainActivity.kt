@@ -71,26 +71,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadSandwichData() {
-        binding?.firstName?.text = avocadoGrilledCheese.name
-        binding?.firstPrice?.text = avocadoGrilledCheese.getDisplayPrice()
-        binding?.secondName?.text = phillyCheese.name
-        binding?.secondPrice?.text = phillyCheese.getDisplayPrice()
-        binding?.thirdName?.text = sampler.name
-        binding?.thirdPrice?.text = sampler.getDisplayPrice()
-
         setClickableSandwiches()
     }
 
     private fun setClickableSandwiches() {
-        binding?.firstSandwich?.setOnClickListener {
-            launchSandwichIntent(avocadoGrilledCheese)
-        }
-        binding?.secondSandwich?.setOnClickListener {
-            launchSandwichIntent(phillyCheese)
-        }
-        binding?.thirdSandwich?.setOnClickListener {
-            launchSandwichIntent(sampler)
-        }
     }
 
     private fun launchSandwichIntent(sandwich: Sandwich) {
