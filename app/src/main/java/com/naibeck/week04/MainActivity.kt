@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_ADD_REQUEST
 import com.naibeck.week04.SandwichDetailActivity.Companion.SANDWICH_KEY
 import com.naibeck.week04.cart.Cart
@@ -82,6 +83,17 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, SandwichDetailActivity::class.java)
         intent.putExtra(SANDWICH_KEY, sandwich)
         startActivityForResult(intent, SANDWICH_ADD_REQUEST)
+    }
+
+    private fun getSandwiches(): List<Sandwich> {
+        return listOf(
+            avocadoGrilledCheese,
+            phillyCheese,
+            sampler,
+            avocadoGrilledCheese,
+            phillyCheese,
+            sampler
+        )
     }
 
     companion object {
