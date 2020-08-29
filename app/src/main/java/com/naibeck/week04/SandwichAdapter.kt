@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.naibeck.week04.databinding.ItemSandwichBinding
 
 class SandwichAdapter constructor(
@@ -31,15 +32,12 @@ class SandwichAdapter constructor(
             val binding = DataBindingUtil.bind<ItemSandwichBinding>(itemView)
             binding?.name?.text = sandwich.name
             binding?.price?.text = sandwich.getDisplayPrice()
-            binding?.image?.setImageDrawable(
-                ContextCompat.getDrawable(
-                    itemView.context,
-                    sandwich.drawable
-                )
-            )
             itemView.setOnClickListener {
                 sandwichListener.onClick(sandwich)
             }
+            Glide.with(itemView.context)
+                .load(sandwich.image)
+                .into(binding?.image!!)
         }
     }
 }

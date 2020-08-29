@@ -9,16 +9,18 @@ data class Sandwich(
     val price: Double,
     val rating: Double,
     val description: String,
-    @DrawableRes val drawable: Int
+    @DrawableRes val drawable: Int,
+    val image: String
 ) : Parcelable {
     fun getDisplayPrice() = "$$price"
 
     constructor(source: Parcel) : this(
-        source.readString()!!,
-        source.readDouble(),
-        source.readDouble(),
-        source.readString()!!,
-        source.readInt()
+    source.readString()!!,
+    source.readDouble(),
+    source.readDouble(),
+    source.readString()!!,
+    source.readInt(),
+    source.readString()!!
     )
 
     override fun describeContents() = 0
@@ -29,6 +31,7 @@ data class Sandwich(
         writeDouble(rating)
         writeString(description)
         writeInt(drawable)
+        writeString(image)
     }
 
     companion object {
