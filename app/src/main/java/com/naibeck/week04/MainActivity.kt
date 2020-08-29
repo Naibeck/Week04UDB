@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadSandwichData() {
+        binding?.sandwichesRecycler?.layoutManager = GridLayoutManager(this, 3)
         setClickableSandwiches()
     }
 
